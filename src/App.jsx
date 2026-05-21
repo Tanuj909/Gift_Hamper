@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MainLayout from "@/app/layouts/MainLayout";
 import HomePage from "@/features/home/pages/HomePage";
 import AboutPage from "@/features/about/pages/AboutPage";
 import CategoriesPage from "@/features/categories/pages/CategoriesPage";
 import CustomHamperPage from "@/features/custom-hamper/pages/CustomHamperPage";
 import GalleryPage from "@/features/gallery/pages/GalleryPage";
+import ContactPage from "@/features/contact/pages/ContactPage";
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -48,6 +49,8 @@ function App() {
         return <CustomHamperPage />;
       case "/gallery":
         return <GalleryPage />;
+      case "/contact":
+        return <ContactPage />;
       default:
         return <HomePage />;
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import Container from "@/shared/components/ui/Container";
 import { ArrowRight, Edit3 } from "lucide-react";
 import { PAGE_CATEGORIES } from "../data/categoriesData";
@@ -28,7 +27,7 @@ const CategoriesPage = () => {
               <h2 className="font-lora italic text-xl sm:text-2xl lg:text-3xl text-primary/95 font-light leading-none">
                 Curated for Every
               </h2>
-              <h1 className="inline-block border border-primary px-5 sm:px-6 py-2.5 sm:py-3 font-cinzel text-2xl sm:text-4xl lg:text-5xl font-bold tracking-wider text-primary mt-2 leading-none whitespace-nowrap backdrop-blur-sm shadow-sm">
+              <h1 className="inline-block border border-primary px-5 py-2.5 font-cinzel text-2xl sm:text-4xl lg:text-5xl font-bold tracking-wider text-primary mt-2 leading-none whitespace-nowrap backdrop-blur-sm shadow-sm md:border-0 md:px-0 md:py-0 md:backdrop-blur-none md:shadow-none">
                 Gift Category
               </h1>
             </div>

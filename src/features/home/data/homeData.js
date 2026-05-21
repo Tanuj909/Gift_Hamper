@@ -75,6 +75,24 @@ export const FEATURED_PRODUCTS = [
     description: "Traditional beaded wall hangings representing prosperity, featuring premium tassels and gotapatti detailing.",
     items: ["Wall Hangings Set", "Handmade Tassels", "Gotapatti Work", "Auspicious Beads"],
   },
+  {
+    id: 5,
+    title: "Royal Sagan Envelope Set",
+    price: "₹1,200",
+    image: weddingHamper,
+    badge: "Handmade Luxe",
+    description: "Premium sagan envelopes with intricate gold thread embroidery, pearls, and designer borders.",
+    items: ["Gold Thread Work", "Pearl Trims", "Premium Cardstock", "Matching Box"],
+  },
+  {
+    id: 6,
+    title: "Luxury Corporate Gift Crate",
+    price: "₹5,500",
+    image: corporateHamper,
+    badge: "Corporate Choice",
+    description: "Beautifully decorated pine wood crate with personalized tags, dried flowers, and traditional fillers.",
+    items: ["Pine Wood Crate", "Custom Brand Tag", "Floral Accents", "Luxe Finish"],
+  },
 ];
 
 export const BUILD_STEPS = [

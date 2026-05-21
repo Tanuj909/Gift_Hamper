@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Container from "@/shared/components/ui/Container";
 import SectionTitle from "@/shared/components/ui/SectionTitle";
 import Button from "@/shared/components/ui/Button";
@@ -117,30 +117,33 @@ const CustomHamperPage = () => {
   return (
     <div className="pt-20 pb-20 min-h-screen flex flex-col bg-transparent">
       
-      {/* 1. Hero Banner: 55% height, full background image, right-aligned text overlay using brand color (text-primary) */}
+      {/* Hero Banner */}
       <div 
         className="relative w-full h-[55vh] min-h-[350px] bg-cover bg-center flex items-center justify-end overflow-hidden" 
         style={{ backgroundImage: `url(${bannerImg})` }}
       >
-        {/* Soft elegant gradient overlay to blend with the light blue silk banner background */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FAF4E8]/20 to-[#FAF4E8]/65 pointer-events-none" />
         
         <div className="max-w-[92%] xl:max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10 flex justify-end">
-          <div className="w-full md:w-[45%] text-right flex flex-col items-end space-y-4 sm:space-y-5 animate-in fade-in slide-in-from-right duration-700">
+          <div className="w-full md:w-[48%] text-right flex flex-col items-end space-y-4 sm:space-y-5 animate-in fade-in slide-in-from-right duration-700">
             
             {/* Title Text in Primary Brand Color from global.css (#800c0c) */}
             <div className="text-primary">
               <h2 className="font-lora italic text-xl sm:text-2xl lg:text-3xl text-primary/95 font-light leading-none">
-                Where Gifting Meets
+                Designed Around
               </h2>
-              <h1 className="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wider text-primary mt-1 leading-tight">
-                Grandeur
+              <h1 className="inline-block border border-primary px-5 py-2.5 font-cinzel text-2xl sm:text-4xl lg:text-5xl font-bold tracking-wider text-primary mt-2 leading-none whitespace-nowrap backdrop-blur-sm shadow-sm md:border-0 md:px-0 md:py-0 md:backdrop-blur-none md:shadow-none">
+                Custom Hampers
               </h1>
             </div>
 
             {/* Tagline in Primary Brand Color from global.css (#800c0c) */}
-            <p className="font-cinzel text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-primary uppercase">
-              LIMITED • LUXURIOUS • DISTINCTIVE
+            <p className="hidden md:block font-lora text-sm sm:text-base text-primary/85 leading-relaxed max-w-md">
+              Share your occasion, colors, budget, and ideas. We will curate a bespoke hamper that feels personal, premium, and celebration-ready.
+            </p>
+
+            <p className="hidden md:block font-cinzel text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-primary uppercase">
+              BESPOKE - LUXURY - HANDCRAFTED - MEMORABLE
             </p>
 
             {/* CTA Button in Primary Brand Color and Border */}
@@ -148,7 +151,7 @@ const CustomHamperPage = () => {
               onClick={scrollToForm}
               className="border border-primary px-8 py-3.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-sm cursor-pointer shadow-sm"
             >
-              Custom Hamper
+              Start Customizing
             </button>
 
           </div>

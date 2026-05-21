@@ -75,7 +75,8 @@ const Navbar = () => {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             {/* CTA Button */}
-            <button
+            <a
+              href="/contact"
               className="
                 hidden md:block
                 bg-primary
@@ -92,10 +93,11 @@ const Navbar = () => {
                 duration-300
                 hover:scale-[1.03]
                 cursor-pointer
+                text-center
               "
             >
               Contact Us
-            </button>
+            </a>
 
             {/* Mobile Menu Trigger */}
             <button 
@@ -134,7 +136,9 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <button
+            <a
+              href="/contact"
+              onClick={() => setIsOpen(false)}
               className="
                 md:hidden
                 w-full
@@ -149,10 +153,11 @@ const Navbar = () => {
                 tracking-wider
                 mt-2
                 cursor-pointer
+                text-center
               "
             >
               Contact Us
-            </button>
+            </a>
           </nav>
         </div>
       )}

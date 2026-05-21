@@ -23,9 +23,4 @@ export const NAV_LINKS = [
     label: "Bulk Orders",
     path: "/bulk-orders",
   },
-
-  {
-    label: "Contact",
-    path: "/contact",
-  },
 ];

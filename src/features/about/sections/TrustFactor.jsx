@@ -1,56 +1,50 @@
-import React from "react";
-import { Sparkles, Coins, Heart, Award } from "lucide-react";
 import Container from "@/shared/components/ui/Container";
 import SectionTitle from "@/shared/components/ui/SectionTitle";
 import { TRUST_FACTORS } from "../data/aboutData";
 
-const iconMap = {
-  Sparkles: Sparkles,
-  PiggyBank: Coins, // Map PiggyBank data field to premium Coins icon
-  Heart: Heart,
-  Award: Award
-};
-
 const TrustFactor = () => {
   return (
-    <section className="py-20 bg-transparent">
+    <section className="py-14 sm:py-20 bg-transparent">
       <Container>
-        <div className="max-w-6xl mx-auto text-center">
-          
-          <SectionTitle 
-            title="Why Choose Sajjao" 
-            subtitle="Our Pillars of Trust" 
-            align="center"
-            className="mb-12"
-          />
+        <div className="w-full">
+          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+            <SectionTitle
+              title="Why Choose Sajjao"
+              subtitle="Our Pillars of Trust"
+              align="center"
+              className="mb-5"
+            />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            {TRUST_FACTORS.map((item, idx) => {
-              const IconComponent = iconMap[item.icon] || Sparkles;
-              return (
-                <div 
-                  key={idx}
-                  className="bg-[#FAF4E8]/80 backdrop-blur-sm p-8 rounded-3xl border border-primary/5 shadow-soft flex items-start gap-6 transition-all duration-300"
-                >
-                  {/* Icon Wrapper */}
-                  <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center text-primary shrink-0">
-                    <IconComponent size={22} className="stroke-[1.5]" />
-                  </div>
-
-                  <div>
-                    <h4 className="font-cinzel text-xs sm:text-sm font-bold text-primary tracking-wide mb-2">
-                      {item.title}
-                    </h4>
-                    
-                    <p className="font-lora text-[13px] text-primary/75 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            <p className="font-lora text-sm sm:text-[15px] text-primary/80 leading-relaxed">
+              We bring together handcrafted styling, practical planning, and festive elegance so every gift feels beautiful, thoughtful, and ready for the moment.
+            </p>
           </div>
 
+          <div className="bg-[#FAF4E8]/80 backdrop-blur-sm border border-primary/5 rounded-2xl shadow-soft overflow-hidden">
+            {TRUST_FACTORS.map((item, idx) => (
+              <div
+                key={idx}
+                className="group grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-4 sm:gap-8 p-6 sm:p-8 border-b border-primary/10 last:border-b-0 transition-colors duration-300 hover:bg-white/20"
+              >
+                <div className="flex sm:flex-col items-center sm:items-start gap-3">
+                  <span className="font-cinzel text-3xl sm:text-5xl font-bold text-primary/20 leading-none transition-colors duration-300 group-hover:text-primary/35">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-px w-16 sm:w-full bg-primary/20" />
+                </div>
+
+                <div>
+                  <h4 className="font-cinzel text-base sm:text-lg font-bold text-primary tracking-wide mb-3">
+                    {item.title}
+                  </h4>
+
+                  <p className="font-lora text-sm sm:text-[15px] text-primary/75 leading-relaxed max-w-2xl">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </section>

@@ -41,15 +41,17 @@ const HeroSection = () => {
           {/* 3. Action Buttons (No shared background card, standard premium hover states) */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center pt-2">
             <Button 
-              variant="primary" 
+              variant="cream" 
               size="lg" 
+              href="/categories"
               className="font-bold text-xs uppercase tracking-wider px-8 min-w-[200px]"
             >
               Explore Collections
             </Button>
             <Button 
-              variant="primary" 
+              variant="cream" 
               size="lg" 
+              href="/custom-hampers"
               className="font-bold text-xs uppercase tracking-wider px-8 min-w-[200px]"
             >
               Custom Hampers
