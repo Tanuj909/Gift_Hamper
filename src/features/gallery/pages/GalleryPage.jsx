@@ -6,32 +6,15 @@ import { GALLERY_ITEMS } from "../data/galleryData";
 const GalleryPage = () => {
   const featuredItems = GALLERY_ITEMS.filter((item) => item.featured);
   const galleryItems = GALLERY_ITEMS.filter((item) => !item.featured);
-  const portfolioItems = [
-    {
-      title: "Wedding Gifting",
-      category: "Wedding",
-      description: "Elegant hampers, sagan packing, return gifts, and festive trays designed for wedding celebrations.",
-      image: GALLERY_ITEMS.find((item) => item.id === "wedding-hamper")?.image,
-    },
-    {
-      title: "Corporate Hampers",
-      category: "Corporate",
-      description: "Premium curated gifts for teams, clients, launches, festive greetings, and bulk appreciation orders.",
-      image: GALLERY_ITEMS.find((item) => item.id === "corporate-luxe")?.image,
-    },
-    {
-      title: "Custom Creations",
-      category: "Bespoke",
-      description: "Personalized hamper styling with selected fillers, colors, flowers, trays, ribbons, and notes.",
-      image: GALLERY_ITEMS.find((item) => item.id === "custom-craft")?.image,
-    },
-    {
-      title: "Festive Collections",
-      category: "Celebration",
-      description: "Occasion-ready gifts for festivals, birthdays, announcements, family events, and intimate gatherings.",
-      image: GALLERY_ITEMS.find((item) => item.id === "golden-aura")?.image,
-    },
-  ];
+  
+  // Single portfolio item
+  const portfolioItem = {
+    title: "Our Portfolio",
+    description: "Handcrafted hampers, wedding favors, corporate gifting, and festive celebrations. Thoughtfully designed to capture every special moment.",
+    image: GALLERY_ITEMS.find((item) => item.id === "wedding-hamper")?.image,
+    link: "/portfolio",
+    linkText: "Explore Portfolio",
+  };
 
   const scrollToGallery = () => {
     const element = document.getElementById("gallery-collection");
@@ -42,6 +25,7 @@ const GalleryPage = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen flex flex-col">
+      {/* Banner Section */}
       <div
         className="relative w-full h-[55vh] min-h-[350px] bg-cover bg-center flex items-center justify-end overflow-hidden"
         style={{ backgroundImage: `url(${bannerImg})` }}
@@ -77,70 +61,61 @@ const GalleryPage = () => {
         </div>
       </div>
 
-      <Container className="mt-20">
-        <div className="text-center mb-12">
+      {/* PORTFOLIO SECTION */}
+      <div className="max-w-[92%] xl:max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 mt-20">
+        {/* Title Section */}
+        <div className="text-center mb-8 sm:mb-10">
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-accent block mb-3 font-cinzel">
             Portfolio
           </span>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider text-primary break-words">
-            Sajjao Portfolio
+          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider text-primary">
+            Our Portfolio
           </h2>
-          <p className="font-lora text-[15px] sm:text-base text-primary/80 leading-relaxed max-w-2xl mx-auto mt-5">
-            A curated look at the gifting styles we create across weddings, corporate orders, custom hampers, and festive occasions.
-          </p>
+          <div className="w-16 h-[1.5px] bg-accent/40 mx-auto mt-3 sm:mt-4" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-8 items-stretch">
-          <div className="group relative min-h-[360px] sm:min-h-[460px] rounded-2xl overflow-hidden shadow-soft border border-primary/10 bg-[#FAF4E8]/80">
+        {/* Image Section - Reduced Height */}
+        <div className="relative w-full overflow-hidden rounded-2xl shadow-soft group">
+          <div className="relative w-full h-[22vh] min-h-[180px] sm:h-[25vh] md:h-[28vh] lg:h-[32vh]">
             <img
-              src={portfolioItems[0].image}
-              alt={portfolioItems[0].title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              src={portfolioItem.image}
+              alt="Our Portfolio"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF4E8]/95 via-[#FAF4E8]/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-              <span className="font-lora text-[10px] uppercase tracking-[0.25em] text-accent font-bold">
-                {portfolioItems[0].category}
-              </span>
-              <h3 className="font-cinzel text-2xl sm:text-3xl font-bold text-primary mt-2">
-                {portfolioItems[0].title}
+            
+            {/* Darker Overlay Gradient for text visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            
+            {/* Text Content Overlay */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-8 md:px-12">
+              {/* Heading inside image */}
+              <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                Explore Portfolio
               </h3>
-              <p className="font-lora text-sm sm:text-[15px] text-primary/75 leading-relaxed max-w-xl mt-3">
-                {portfolioItems[0].description}
+              
+              <div className="w-10 h-[1px] bg-white/40 mx-auto mb-3 sm:mb-4" />
+              
+              {/* Description - Hidden on mobile, visible on tablet and up */}
+              <p className="hidden sm:block font-lora text-xs sm:text-sm md:text-base text-white/95 leading-relaxed max-w-3xl mx-auto mb-3 sm:mb-4">
+                Handcrafted hampers, wedding favors, corporate gifting, and festive celebrations. Thoughtfully designed to capture every special moment.
               </p>
+              
+              <a
+                href={portfolioItem.link}
+                className="group/link inline-flex items-center gap-2 border border-white/40 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-cinzel font-bold uppercase tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 md:py-2.5 transition-all duration-300 hover:gap-3"
+              >
+                {portfolioItem.linkText}
+                <ArrowRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover/link:translate-x-1"
+                />
+              </a>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 gap-5">
-            {portfolioItems.slice(1).map((item) => (
-              <div
-                key={item.title}
-                className="group grid grid-cols-[116px_1fr] sm:grid-cols-[160px_1fr] gap-4 sm:gap-5 bg-[#FAF4E8]/80 backdrop-blur-sm border border-primary/5 rounded-2xl shadow-soft overflow-hidden"
-              >
-                <div className="h-full min-h-[128px] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="py-5 pr-5 sm:py-6 sm:pr-6">
-                  <span className="font-lora text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-accent font-bold">
-                    {item.category}
-                  </span>
-                  <h3 className="font-cinzel text-base sm:text-xl font-bold text-primary mt-2 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="font-lora text-xs sm:text-sm text-primary/75 leading-relaxed mt-2">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </Container>
+      </div>
 
+      {/* Featured Work Section */}
       <Container className="mt-20">
         <div className="text-center mb-12">
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-accent block mb-3 font-cinzel">
@@ -176,6 +151,7 @@ const GalleryPage = () => {
         </div>
       </Container>
 
+      {/* Gallery Collection Section */}
       <Container id="gallery-collection" className="mt-20 scroll-mt-24">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
           <div>
