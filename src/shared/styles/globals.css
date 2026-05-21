@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "@fontsource/lora";
+@import "@fontsource/cinzel-decorative";
+
+@theme {
+  --color-primary: #800c0c;
+  --color-accent: #c59b27;
+  --color-bg-paper: #FAF4E8;
+  --font-lora: "Lora", serif;
+  --font-cinzel: "Cinzel Decorative", serif;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --radius-xl2: 1.5rem;
+}
+
+body {
+  font-family: "Lora", serif;
+  color: #800c0c;
+  background-image: url("../../assets/bg/bg_image.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
