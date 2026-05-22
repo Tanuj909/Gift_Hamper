@@ -72,9 +72,14 @@ import Container from "@/shared/components/ui/Container";
 import SectionTitle from "@/shared/components/ui/SectionTitle";
 import Button from "@/shared/components/ui/Button";
 import { BUILD_STEPS } from "@/features/home/data/homeData";
-import { Sparkles, Package, Truck, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, Package, ArrowRight, CheckCircle2 } from "lucide-react";
 
-const stepIcons = [Sparkles, Package, Truck];
+import step1Img from "@/assets/custom_hamper_craft.png";
+import step2Img from "@/assets/golden_aura.png";
+import step3Img from "@/assets/wedding_hamper.png";
+
+const stepImages = [step1Img, step2Img, step3Img];
+
 
 const CustomeHamper = () => {
   return (
@@ -106,19 +111,22 @@ const CustomeHamper = () => {
           {/* Process Timeline - Horizontal Style */}
           <div className="relative mb-16">
             {/* Connecting Line */}
-            <div className="hidden md:block absolute top-24 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
               {BUILD_STEPS.map((item, idx) => {
-                const Icon = stepIcons[idx];
+                const image = stepImages[idx];
                 return (
                   <div key={idx} className="relative text-center group">
                     {/* Step Number Circle */}
                     <div className="relative z-10 mb-6">
-                      <div className="w-20 h-20 mx-auto rounded-full bg-white border-2 border-accent/20 shadow-lg flex items-center justify-center group-hover:border-accent/50 transition-all duration-300 group-hover:scale-105">
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
-                          <Icon className="w-7 h-7 text-accent/70 group-hover:text-accent transition-colors" />
-                        </div>
+                      <div className="w-60 h-44 mx-auto rounded-full bg-white border-2 border-accent/20 shadow-lg overflow-hidden flex items-center justify-center group-hover:border-accent/50 transition-all duration-300 group-hover:scale-105">
+                        <img 
+                          src={image} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                        />
                       </div>
                       <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center font-cinzel text-[11px] font-bold shadow-md">
                         {item.step}

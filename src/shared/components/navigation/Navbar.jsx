@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/shared/constants/navigationLinks";
+import logo from "@/assets/logo/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +18,26 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+
+    const handleDocClick = () => {
+      setTimeout(() => {
+        setCurrentPath(window.location.pathname);
+      }, 50);
+    };
+    document.addEventListener("click", handleDocClick);
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      document.removeEventListener("click", handleDocClick);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -41,35 +63,45 @@ const Navbar = () => {
         >
           
           {/* Logo */}
-          <div className="shrink-0 flex flex-col">
-            <h1 className="font-cinzel text-2xl md:text-3xl text-primary font-bold leading-none">
-              Sajjao
-            </h1>
-            <span className="text-[9px] uppercase tracking-[0.25em] text-accent font-bold mt-1">
-              by Ankita
-            </span>
-          </div>
+          <a href="/" className="shrink-0 flex items-center focus:outline-none">
+            <img 
+              src={logo} 
+              alt="Sajjao Logo" 
+              className={`object-contain transition-all duration-300 ${
+                isScrolled ? "h-12 md:h-14" : "h-14 md:h-16"
+              }`}
+            />
+          </a>
+
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.path}
-                className="
-                  font-lora
-                  text-primary
-                  text-[14px] xl:text-[15px]
-                  font-semibold
-                  transition-all
-                  duration-300
-                  hover:opacity-70
-                  whitespace-nowrap
-                "
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = currentPath === link.path;
+              return (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  className={`
+                    font-lora
+                    text-[14px] xl:text-[15px]
+                    font-semibold
+                    transition-all
+                    duration-300
+                    hover:opacity-70
+                    whitespace-nowrap
+                    relative
+                    py-1
+                    ${isActive ? "text-accent" : "text-primary"}
+                  `}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent rounded-full animate-in fade-in zoom-in duration-300" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right Side */}
@@ -116,26 +148,29 @@ const Navbar = () => {
       {isOpen && (
         <div className="lg:hidden absolute top-20 left-0 w-full bg-[#FAF4E8] shadow-md border-t border-primary/5 z-40 transition-all duration-300">
           <nav className="flex flex-col p-6 space-y-4">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.path}
-                onClick={() => setIsOpen(false)}
-                className="
-                  font-lora
-                  text-primary
-                  text-[16px]
-                  font-semibold
-                  py-1.5
-                  border-b border-primary/5
-                  transition-all
-                  duration-300
-                  hover:pl-2
-                "
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = currentPath === link.path;
+              return (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`
+                    font-lora
+                    text-[16px]
+                    font-semibold
+                    py-1.5
+                    border-b border-primary/5
+                    transition-all
+                    duration-300
+                    hover:pl-2
+                    ${isActive ? "text-accent pl-2 font-bold" : "text-primary"}
+                  `}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <a
               href="/contact"
               onClick={() => setIsOpen(false)}
